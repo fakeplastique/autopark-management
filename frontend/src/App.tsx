@@ -4,28 +4,30 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Box,
   Button,
 } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import VehicleList from './components/VehicleList';
 import VehicleDialog from './components/VehicleDialog';
 import { getVehicles, createVehicle, updateVehicle, deleteVehicle } from './api/vehicles';
-import { Vehicle, VehicleFormData } from './types/vehicle';
+import { Vehicle, VehicleFormData, VehiclesFilter } from './types/vehicle';
+import { VehicleFilterLayout } from './components/VehicleFilterLayout';
 
 function App() {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
+  const [filter, setFilter] = useState<VehiclesFilter>({});
+
 
   const loadVehicles = async () => {
-    const data = await getVehicles();
+    const data = await getVehicles(filter);
     setVehicles(data);
   };
 
   useEffect(() => {
     loadVehicles();
-  }, []);
+  }, [filter]);
 
   const handleCreate = () => {
     setSelectedVehicle(null);
@@ -66,6 +68,7 @@ function App() {
       </AppBar>
 
       <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <VehicleFilterLayout filterChange={setFilter}/>
         <VehicleList
           vehicles={vehicles}
           onEdit={handleEdit}

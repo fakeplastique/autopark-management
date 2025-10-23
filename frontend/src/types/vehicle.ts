@@ -16,3 +16,9 @@ export interface VehicleFormData {
   year: number;
   status?: string;
 }
+
+export interface VehiclesFilter {
+  brand?: string;
+  model?: string;
+  year?: number;
+}
