@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
 import { UpdateVehicleDto } from './dto/update-vehicle.dto';
+import { FilterVehiclesDto } from './dto/filter-vehicles.dto';
 
 @Injectable()
 export class VehiclesService {
@@ -17,10 +18,8 @@ export class VehiclesService {
     return this.vehiclesRepository.save(vehicle);
   }
 
-  async findAll(): Promise<Vehicle[]> {
-    return this.vehiclesRepository.find({
-      order: { createdAt: 'DESC' },
-    });
+  async findAll(filters: FilterVehiclesDto): Promise<Vehicle[]> {
+    return this.vehiclesRepository.findBy(filters);
   }
 
   async findOne(id: string): Promise<Vehicle> {
