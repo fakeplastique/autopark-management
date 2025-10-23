@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Vehicle, VehicleFormData } from '../types/vehicle';
+import { Vehicle, VehicleFormData, VehiclesFilter } from '../types/vehicle';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
@@ -7,8 +7,8 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export const getVehicles = async (): Promise<Vehicle[]> => {
-  const response = await api.get('/vehicles');
+export const getVehicles = async (filter?: VehiclesFilter | null): Promise<Vehicle[]> => {
+  const response = await api.get('/vehicles', {params: filter});
   return response.data;
 };
 
