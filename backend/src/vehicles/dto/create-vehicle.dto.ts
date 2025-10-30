@@ -1,4 +1,5 @@
-import { IsString, IsNumber, IsNotEmpty, Min, Max } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty, Min, Max, IsEnum, IsOptional } from 'class-validator';
+import { VehicleStatus } from '../vehicle.entity';
 
 export class CreateVehicleDto {
   @IsString()
@@ -17,4 +18,8 @@ export class CreateVehicleDto {
   @Min(1900)
   @Max(new Date().getFullYear() + 1)
   year: number;
+
+  @IsEnum(VehicleStatus)
+  @IsOptional()
+  status?: VehicleStatus;
 }
