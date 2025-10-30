@@ -16,7 +16,7 @@ import { VehiclesModule } from './vehicles/vehicles.module';
       password: process.env.DATABASE_PASSWORD || 'autopark123',
       database: process.env.DATABASE_NAME || 'autopark',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: false,
     }),
     VehiclesModule,
   ],
