@@ -8,7 +8,7 @@ import {
   TextField,
   MenuItem,
 } from '@mui/material';
-import { Vehicle, VehicleFormData } from '../types/vehicle';
+import { Vehicle, VehicleFormData, VehicleStatus } from '../types/vehicle';
 
 interface VehicleDialogProps {
   open: boolean;
@@ -96,7 +96,7 @@ export default function VehicleDialog({ open, vehicle, onClose, onSave }: Vehicl
             select
             fullWidth
             value={formData.status}
-            onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, status: e.target.value as VehicleStatus })}
           >
             <MenuItem value="available">Available</MenuItem>
             <MenuItem value="in_use">In Use</MenuItem>

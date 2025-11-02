@@ -26,6 +26,7 @@ services:
     ports:
       - "3000:3000"
     environment:
+      PORT: 3000
       DATABASE_HOST: postgres
       DATABASE_PORT: 5432
       DATABASE_USER: autopark
