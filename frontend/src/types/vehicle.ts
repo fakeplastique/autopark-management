@@ -1,10 +1,16 @@
+export enum VehicleStatus {
+  AVAILABLE = 'available',
+  IN_USE = 'in_use',
+  MAINTENANCE = 'maintenance',
+}
+
 export interface Vehicle {
   id: string;
   brand: string;
   model: string;
   plateNumber: string;
   year: number;
-  status: string;
+  status: VehicleStatus;
   createdAt: string;
   updatedAt: string;
 }
@@ -14,11 +20,12 @@ export interface VehicleFormData {
   model: string;
   plateNumber: string;
   year: number;
-  status?: string;
+  status?: VehicleStatus;
 }
 
 export interface VehiclesFilter {
   brand?: string;
   model?: string;
   year?: number;
+  status?: VehicleStatus;
 }
