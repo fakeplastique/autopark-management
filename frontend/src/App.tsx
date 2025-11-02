@@ -10,7 +10,7 @@ import { Add as AddIcon } from '@mui/icons-material';
 import VehicleList from './components/VehicleList';
 import VehicleDialog from './components/VehicleDialog';
 import { getVehicles, createVehicle, updateVehicle, deleteVehicle } from './api/vehicles';
-import { Vehicle, VehicleFormData, VehiclesFilter } from './types/vehicle';
+import { Vehicle, VehiclesFilter, VehicleFormData } from './types/vehicle';
 import { VehicleFilterLayout } from './components/VehicleFilterLayout';
 
 function App() {

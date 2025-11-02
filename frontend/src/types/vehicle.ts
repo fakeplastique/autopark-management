@@ -1,19 +1,7 @@
-export enum VehicleStatus {
-  AVAILABLE = 'available',
-  IN_USE = 'in_use',
-  MAINTENANCE = 'maintenance',
-}
+import type { components } from './api';
 
-export interface Vehicle {
-  id: string;
-  brand: string;
-  model: string;
-  plateNumber: string;
-  year: number;
-  status: VehicleStatus;
-  createdAt: string;
-  updatedAt: string;
-}
+export type Vehicle = components['schemas']['Vehicle'];
+export type VehicleStatus = Vehicle['status'];
 
 export interface VehicleFormData {
   brand: string;
